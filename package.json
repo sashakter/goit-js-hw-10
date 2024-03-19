@@ -15,7 +15,21 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "flatpickr": "^4.6.13",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
-  }
+  },
+  "description": "Цей проект було створено за допомогою Vite. Для знайомства та налаштування додаткових можливостей [звернись до документації](https://vitejs.dev/).",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashakter/goit-js-hw-10.git"
+  },
+  "keywords": [
+    "roma"
+  ],
+  "bugs": {
+    "url": "https://github.com/sashakter/goit-js-hw-10/issues"
+  },
+  "homepage": "https://github.com/sashakter/goit-js-hw-10#readme"
 }
