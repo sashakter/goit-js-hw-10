@@ -1,7 +1,12 @@
-'use strict'; // Описаний в документації
+ // Описаний в документації
 import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+// Описаний у документації
+import iziToast from "izitoast";
+// Додатковий імпорт стилів
+import "izitoast/dist/css/iziToast.min.css";
+
 
 const inputDateTime = document.getElementById('datetime-picker');
 const buttonStart = document.querySelector('button[data-start]');
@@ -22,7 +27,15 @@ const options = {
     userSelectDate = new Date(selectedDates[0]);
     console.log(userSelectDate);
     if (options.defaultDate > userSelectDate) {
-      window.alert('Please choose a date in the future');
+      iziToast.error({
+        theme: 'dark',
+        title: 'Error',
+        message: 'Please choose date in the future',
+        position: 'topRight',
+        color: '#EF4040',        
+        iconUrl: './img/close-icon.svg',
+        progressBarColor: '#B51B1B',      
+    });
       buttonStart.disabled = true;
     } else {
       buttonStart.disabled = false;
@@ -31,6 +44,8 @@ const options = {
 };
 function countdown() {
   const futureDate = userSelectDate.getTime();
+  buttonStart.disabled = true;
+  inputDateTime.disabled = true;
 
   function convertMs(ms) {
     const second = 1000;
@@ -45,9 +60,10 @@ function countdown() {
 
     return { days, hours, minutes, seconds };
   }
+
+  const arrayOfSpans = [timerDays, timerHours, timerMinutes, timerSeconds];
   function addLeadingZero(value) {
     const arrayOfNumbers = Object.values(value).join(' ').split(' ');
-    const arrayOfSpans = [timerDays, timerHours, timerMinutes, timerSeconds];
     const updatedArray = arrayOfNumbers.map(element => {
       return element.length > 1 ? element : element.padStart(2, '0');
     });
@@ -63,7 +79,10 @@ function countdown() {
     addLeadingZero(timeParts);
     if (dateDifference < 0) {
       clearInterval(timer);
-
+      arrayOfSpans.forEach(element => {
+        element.textContent = '00';
+      });
+      inputDateTime.disabled = false;
       return;
     }
   }, 1000);
