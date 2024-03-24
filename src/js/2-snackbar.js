@@ -4,14 +4,6 @@ import "izitoast/dist/css/iziToast.min.css";
 const form = document.querySelector(".form");
 
 
-function submitForm(evt){
-    
-}
-
-// Create promise
-
-
-
 form.addEventListener("submit", evt => {
     evt.preventDefault();
     const currentDelayMs = parseInt(document.querySelector("input[name=delay]").value, 10);
