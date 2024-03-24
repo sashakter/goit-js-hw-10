@@ -33,7 +33,7 @@ const options = {
         message: 'Please choose date in the future',
         position: 'topRight',
         color: '#EF4040',        
-        iconUrl: './img/close-icon.svg',
+        iconUrl: 'https://cdn.shopify.com/s/files/1/0742/5163/2948/files/close-icon.svg?v=1711319948',
         progressBarColor: '#B51B1B',      
     });
       buttonStart.disabled = true;
